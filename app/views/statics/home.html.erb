@@ -10,8 +10,11 @@
         </div>
         <div id="navbarMenuHeroA" class="navbar-menu">
           <div class="navbar-end">
-            <%= link_to 'All posts', '#', class: 'navbar-item'%>
-            <%= link_to 'Create post', '#', class: 'navbar-item'%>
+            <%= link_to 'All posts','#', class: 'navbar-item'%>
+            <% if user_signed_in? %>
+              <%= link_to 'Create post', '#', class: 'navbar-item'%>
+              <%= link_to 'Log out', destroy_user_session_path, class: 'navbar-item', method: :delete%>
+            <% end %>
           </div>
         </div>
       </div>
@@ -28,8 +31,11 @@
         A minimum social media platform
       </h2>
       <div class="are-medium">
-        <%= link_to 'Register', '#', class: 'button is-info is-rounded' %>
-        <%= link_to 'View', '#', class: 'button is-warning is-rounded' %>
+        <% unless user_signed_in? %>
+          <%= link_to 'Login', new_user_session_path, class: 'button is-info is-large is-rounded' %>
+        <% end %>
+
+        <%= link_to 'View', '#', class: 'button is-warning is-rounded is-large' %>
       </div>
     </div>
   </div>

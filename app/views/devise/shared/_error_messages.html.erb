@@ -1,0 +1,11 @@
+<% if resource.errors.any? %>
+  <div id="error_explanation">
+      <% resource.errors.full_messages.each do |message| %>
+        <div class="notification is-danger">
+          <%= message %>
+          <button class="delete"></button>
+        </div>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

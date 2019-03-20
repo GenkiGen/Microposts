@@ -12,7 +12,7 @@
   <body>
     <%= yield %>
     <% if notice %>
-      <div class="notification is-danger">
+      <div class="notification is-primary">
         <%= notice %>
         <button class="delete"></button>
       <div>
@@ -26,3 +26,14 @@
     <% end %>
   </body>
 </html>
+
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', () => {
+  (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+    $notification = $delete.parentNode;
+    $delete.addEventListener('click', () => {
+      $notification.parentNode.removeChild($notification);
+    });
+  });
+});
+</script>

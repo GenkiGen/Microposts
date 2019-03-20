@@ -14,3 +14,16 @@
  *= require_self
  */
 @import 'bulma';
+
+body, input {
+  font-size: 20px;
+}
+
+* {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+input {
+  display: inline-block;
+}
