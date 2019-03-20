@@ -8,7 +8,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'is valid with username, email, password, password confirmation' do
-      expect(@user).to be_valid
+      expect(FactoryBot.build(:user)).to be_valid
     end
 
     it 'is invalid without username' do
