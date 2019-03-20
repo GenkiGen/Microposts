@@ -11,5 +11,18 @@
 
   <body>
     <%= yield %>
+    <% if notice %>
+      <div class="notification is-danger">
+        <%= notice %>
+        <button class="delete"></button>
+      <div>
+    <% end %>
+
+    <% if alert %>
+      <div class="notification is-warning">
+        <%= alert %>
+        <button class="delete"></button>
+      </div>
+    <% end %>
   </body>
 </html>
