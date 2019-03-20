@@ -10,12 +10,11 @@
   </head>
 
   <body>
-    <%= yield %>
     <% if notice %>
-      <div class="notification is-primary">
+      <div class="notification is-success">
         <%= notice %>
         <button class="delete"></button>
-      <div>
+      </div>
     <% end %>
 
     <% if alert %>
@@ -24,6 +23,7 @@
         <button class="delete"></button>
       </div>
     <% end %>
+    <%= yield %>
   </body>
 </html>
 
