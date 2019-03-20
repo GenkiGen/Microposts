@@ -1,0 +1,25 @@
+<section class="hero is-primary">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        View profile
+      </h1>
+      <h2 class="subtitle">
+        <%= @user.username %>
+      </h2>
+    </div>
+  </div>
+</section>
+
+<nav class="level">
+  <div class="level-item has-text-centered">
+    <p class="heading">Posts</p>
+    <p class="title"><%= @user.posts.count %></p>
+  </div>
+
+  <div class="level-item">
+    <figure class="image is-128x128">
+      <%= avatar @user, size: 128, class: 'is-rounded' %>
+    </figure>
+  </div>
+</nav>
