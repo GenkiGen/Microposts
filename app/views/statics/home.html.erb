@@ -1,12 +1,36 @@
-<section class="hero is-primary is-medium is-bold">
+<section class="hero is-large is-primary">
+  <!-- Hero head: will stick at the top -->
+  <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item">
+            <h1>Micropost</h1>
+          </a>
+        </div>
+        <div id="navbarMenuHeroA" class="navbar-menu">
+          <div class="navbar-end">
+            <%= link_to 'All posts', '#', class: 'navbar-item'%>
+            <%= link_to 'Create post', '#', class: 'navbar-item'%>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Hero content: will be in the middle -->
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
-        Microposts
+        Welcome To Microposts
       </h1>
       <h2 class="subtitle">
-        Create your own naratives
+        A minimum social media platform
       </h2>
+      <div class="are-medium">
+        <%= link_to 'Register', '#', class: 'button is-info is-rounded' %>
+        <%= link_to 'View', '#', class: 'button is-warning is-rounded' %>
+      </div>
     </div>
   </div>
 </section>
