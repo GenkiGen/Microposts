@@ -1,25 +1,46 @@
-<section class="hero is-primary">
+<section class="hero is-light">
+<!-- Hero head: will stick at the top -->
+  <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item">
+            Microposts
+          </a>
+          <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+        <div id="navbarMenuHeroA" class="navbar-menu">
+          <div class="navbar-end">
+            <%= link_to 'Home', root_path, class: 'navbar-item' %>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
   <div class="hero-body">
-    <div class="container">
-      <h1 class="title">
-        View profile
-      </h1>
-      <h2 class="subtitle">
-        <%= @user.username %>
-      </h2>
-    </div>
+      <div class="columns">
+        <div class="column is-one-fifth has-text-right">
+          <%= avatar @user, size: 256 %>
+        </div>
+
+        <div class="column is-four-fifths">
+          <h1 class="title is-2"><%= @user.username %></h1>
+          <p class="heading">Email</p>
+          <p style="margin-bottom: 8px"><%= @user.email %></p>
+
+          <p class="heading">Joined</p>
+          <p style="margin-bottom: 8px"><%= @user.created_at.strftime("%d/%m/%y") %></p>
+
+          <p class="heading">Posts created</p>
+          <p style="margin-bottom: 8px"><%= @user.posts.count %></p>
+        </div>
+      </div>
   </div>
 </section>
 
-<nav class="level">
-  <div class="level-item has-text-centered">
-    <p class="heading">Posts</p>
-    <p class="title"><%= @user.posts.count %></p>
-  </div>
 
-  <div class="level-item">
-    <figure class="image is-128x128">
-      <%= avatar @user, size: 128, class: 'is-rounded' %>
-    </figure>
-  </div>
-</nav>

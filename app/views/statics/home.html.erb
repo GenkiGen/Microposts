@@ -34,8 +34,10 @@
         <% unless user_signed_in? %>
           <%= link_to 'Login', new_user_session_path, class: 'button is-info is-large is-rounded' %>
         <% end %>
-
-        <%= link_to 'View', '#', class: 'button is-warning is-rounded is-large' %>
+        
+        <% if user_signed_in? %>
+          <%= link_to 'View', user_path(current_user), class: 'button is-warning is-rounded is-large' %>
+        <% end %>
       </div>
     </div>
   </div>
