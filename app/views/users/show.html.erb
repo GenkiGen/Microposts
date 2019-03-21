@@ -35,7 +35,7 @@
   <div class="column is-half has-background-light messages">
     <!-- Comment box if logged in-->
     <% if current_user == @user %>
-      <%= form_for(:post, url: '#') do |f| %>
+      <%= form_for(:post, url: user_posts_path(@user)) do |f| %>
         <div class="field">
           <div class="control">
             <%= f.text_field :title, class: 'input', placeholder: 'Title' %>
@@ -51,7 +51,7 @@
         <%= f.submit 'Create', class: 'button is-danger'%>
       <% end %>
     <% end %>
-    
+
     <!-- Message Display -->
     <% @user.posts.each do |post| %>
       <div class="message is-<%= random_color %>">
