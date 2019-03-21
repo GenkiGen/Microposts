@@ -24,4 +24,19 @@ RSpec.describe Post, type: :model do
       expect(post.errors[:content]).to include("can't be blank")
     end
   end
+
+  describe "Functions" do
+    it "sets is_private to true" do
+      post = build(:public_post) 
+      post.toggle_private(true)
+      expect(post).to be_private
+    end
+    
+    it "sets is_private to false" do
+      post = build(:private_post)
+      post.toggle_private(false)
+      expect(post).not_to be_private
+    end
+  end
+
 end

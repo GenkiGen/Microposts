@@ -7,5 +7,13 @@ FactoryBot.define do
     factory :invalid_post do
       title { nil }
     end
+
+    factory :private_post do
+      is_private { true }
+    end
+
+    factory :public_post do 
+      is_private { true }
+    end
   end
 end

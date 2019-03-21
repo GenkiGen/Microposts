@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2019_03_21_124559) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "private", default: false
+    t.boolean "is_private", default: false
   end
 
   create_table "users", force: :cascade do |t|
