@@ -1,46 +1,71 @@
-<section class="hero is-light">
-<!-- Hero head: will stick at the top -->
-  <div class="hero-head">
-    <nav class="navbar">
-      <div class="container">
-        <div class="navbar-brand">
-          <a class="navbar-item">
-            Microposts
-          </a>
-          <span class="navbar-burger burger" data-target="navbarMenuHeroA">
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
+
+<div class="columns">
+  <div class="column is-half">
+    <div class="hero is-danger is-fullheight">
+      <!-- Hero head: will stick at the top -->
+      <div class="hero-head">
+        <nav class="navbar">
+          <div class="container">
+            <div id="navbarMenuHeroB" class="navbar-menu">
+              <div class="navbar-start">
+                <a class="navbar-item is-active">
+                  Home
+                </a>
+                <a class="navbar-item">
+                  Examples
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+      
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <h1 class="title is-1">Hi, I'm <%= @user.username %></h1>
+          <p class="title is-5"><%= @user.email %></p>
+          <%= avatar @user, class: 'is-rounded', size: 256 %>
+          <p class="heading">Posts</p>
+          <p class="title is-2"><%= @user.posts.count %></p>
         </div>
-        <div id="navbarMenuHeroA" class="navbar-menu">
-          <div class="navbar-end">
-            <%= link_to 'Home', root_path, class: 'navbar-item' %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="column is-half has-background-light messages">
+    <!-- Comment box if logged in-->
+    <% if current_user == @user %>
+      <%= form_for(:post, url: '#') do |f| %>
+        <div class="field">
+          <div class="control">
+            <%= f.text_field :title, class: 'input', placeholder: 'Title' %>
           </div>
         </div>
-      </div>
-    </nav>
-  </div>
 
-  <div class="hero-body">
-      <div class="columns">
-        <div class="column is-one-fifth has-text-right">
-          <%= avatar @user, size: 256 %>
+        <div class="field">
+          <div class="control">
+            <%= f.text_area :content, class: 'input', placeholder: 'Content' %>
+          </div>
         </div>
 
-        <div class="column is-four-fifths">
-          <h1 class="title is-2"><%= @user.username %></h1>
-          <p class="heading">Email</p>
-          <p style="margin-bottom: 8px"><%= @user.email %></p>
-
-          <p class="heading">Joined</p>
-          <p style="margin-bottom: 8px"><%= @user.created_at.strftime("%d/%m/%y") %></p>
-
-          <p class="heading">Posts created</p>
-          <p style="margin-bottom: 8px"><%= @user.posts.count %></p>
+        <%= f.submit 'Create', class: 'button is-danger'%>
+      <% end %>
+    <% end %>
+    
+    <!-- Message Display -->
+    <% @user.posts.each do |post| %>
+      <div class="message is-<%= random_color %>">
+        <div class="message-header">
+          <%= post.title %>
+          <button class="delete"></button>
         </div>
+        <div class="message-body">
+          <em>On <%= format_date_time(post.created_at) %></em>
+          <p>
+            <%= post.content %>
+          </p>
       </div>
+    <% end %>
   </div>
-</section>
-
+</div>
 
