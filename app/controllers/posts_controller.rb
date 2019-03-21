@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :owner_log_in, only: [:create]
+  #before_action :authenticate_user!
+  #before_action :owner_log_in, only: [:create]
 
   def create
     @user ||= User.find(params[:user_id])

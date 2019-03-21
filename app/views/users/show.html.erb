@@ -53,7 +53,7 @@
     <% end %>
 
     <!-- Message Display -->
-    <% @user.posts.each do |post| %>
+    <% @posts.each do |post| %>
       <div class="message is-<%= random_color %>">
         <div class="message-header">
           <%= post.title %>
