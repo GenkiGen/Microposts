@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :username, presence: true
   has_many :posts
+
+  def create_post(post)
+    posts << post
+  end
 end

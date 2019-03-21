@@ -1,19 +1,14 @@
 
 <div class="columns">
   <div class="column is-half">
-    <div class="hero is-danger is-fullheight">
+    <div class="hero is-danger is-fullheight" style="height: 100%">
       <!-- Hero head: will stick at the top -->
       <div class="hero-head">
         <nav class="navbar">
           <div class="container">
             <div id="navbarMenuHeroB" class="navbar-menu">
               <div class="navbar-start">
-                <a class="navbar-item is-active">
-                  Home
-                </a>
-                <a class="navbar-item">
-                  Examples
-                </a>
+                <%= link_to 'Home', root_path, class: 'navbar-item' %>
               </div>
             </div>
           </div>
@@ -35,6 +30,11 @@
   <div class="column is-half has-background-light messages">
     <!-- Comment box if logged in-->
     <% if current_user == @user %>
+      <% if @post.errors.any? %>
+        <% @post.errors.full_messages.each do |msg|%>
+          <p class="is-danger"><%= msg %></p>
+        <% end %>
+      <% end %>
       <%= form_for(:post, url: user_posts_path(@user)) do |f| %>
         <div class="field">
           <div class="control">
