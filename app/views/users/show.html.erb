@@ -30,11 +30,6 @@
   <div class="column is-half has-background-light messages">
     <!-- Comment box if logged in-->
     <% if current_user == @user %>
-      <% if @post.errors.any? %>
-        <% @post.errors.full_messages.each do |msg|%>
-          <p class="is-danger"><%= msg %></p>
-        <% end %>
-      <% end %>
       <%= form_for(:post, url: user_posts_path(@user)) do |f| %>
         <div class="field">
           <div class="control">
@@ -48,6 +43,9 @@
           </div>
         </div>
 
+        <%= f.check_box :is_private %>
+        <%= f.label :is_private, "Private" %><br />
+
         <%= f.submit 'Create', class: 'button is-danger'%>
       <% end %>
     <% end %>
@@ -57,7 +55,13 @@
       <div class="message is-<%= random_color %>">
         <div class="message-header">
           <%= post.title %>
-          <button class="delete"></button>
+          <% if current_user == @user %>
+            <% if post.private? %>
+              <span class="has-text-danger">/Private</span>
+            <% else %>
+              <span class="has-text-success">/Public</span>
+            <% end %>
+          <% end %>
         </div>
         <div class="message-body">
           <em>On <%= format_date_time(post.created_at) %></em>

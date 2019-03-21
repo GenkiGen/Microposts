@@ -5,6 +5,8 @@ class PostsController < ApplicationController
   def create
     @user ||= User.find(params[:user_id])
     @post = Post.new(post_params)
+    params[:post][:is_private] == '1' ? @post.toggle_private(true) : @post.toggle_private(false)
+
     if @user.create_post(@post)
       redirect_to user_path(@user), notice: 'Post created'
     else
