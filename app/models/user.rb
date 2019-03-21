@@ -9,4 +9,12 @@ class User < ApplicationRecord
   def create_post(post)
     posts << post
   end
+
+  def public_posts
+    posts.where('is_private = ?', false)
+  end
+
+  def private_posts
+    posts.where('is_private = ?', true)
+  end
 end

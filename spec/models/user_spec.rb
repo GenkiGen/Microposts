@@ -37,4 +37,27 @@ RSpec.describe User, type: :model do
       expect(another_user.errors[:email]).to include("has already been taken")
     end
   end
+
+  describe 'Functions' do
+    before do 
+      @user = create(:user)
+      @post1 = create(:public_post, user_id: @user.id)
+      @post2 = create(:private_post, user_id: @user.id)
+      @post3 = create(:private_post, user_id: @user.id)
+    end
+
+    describe '#private_posts' do
+      it 'returns only the private posts' do
+        expect(@user.private_posts).to include(@post2, @post3)
+        expect(@user.private_posts).not_to include(@post1)
+      end
+    end
+
+    describe '#public_posts' do
+      it 'returns only the public posts' do
+        expect(@user.public_posts).to include(@post1)
+        expect(@user.public_posts).not_to include(@post2, @post3)
+      end
+    end
+  end
 end

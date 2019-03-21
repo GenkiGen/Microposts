@@ -13,7 +13,7 @@ FactoryBot.define do
     end
 
     factory :public_post do 
-      is_private { true }
+      is_private { false }
     end
   end
 end
