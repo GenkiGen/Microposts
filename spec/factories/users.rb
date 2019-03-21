@@ -7,7 +7,7 @@ FactoryBot.define do
 
     factory :user_with_posts do
       after(:build) do |user|
-        3.times do
+        3.times do 
           user.posts << create(:post)
         end
       end
